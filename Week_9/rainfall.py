@@ -1,0 +1,21 @@
+rainfall = {
+    'Jan': 0, 'Feb': 0, 'Mar': 0, 'Apr': 0, 'May': 0, 'Jun': 0,
+    'Jul': 0, 'Aug': 0, 'Sep': 0, 'Oct': 0, 'Nov': 0, 'Dec': 0
+}
+
+highest = 0
+
+for month in rainfall:
+    rainfall[month] = int(input("Please enter the rainfall for {} (in mm):".format(month)))
+    if highest < rainfall[month]:
+        highest = rainfall[month]
+
+for row in range(highest, 0, -1):
+    for month, value in rainfall.items():
+        if value <= row:
+            print("     ",  end='')
+        else:
+            print("  X  ", end='')
+    print()
+
+print("".join(map(lambda month: " {} ".format(month), rainfall)))
